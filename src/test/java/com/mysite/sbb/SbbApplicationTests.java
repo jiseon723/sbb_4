@@ -105,4 +105,13 @@ class SbbApplicationTests {
 		a.setCreateDate(LocalDateTime.now());
 		this.answerRepository.save(a);
 	}
+
+	//find answer
+	@Test
+	void testJpa09 () {
+		Optional<Answer> oa = this.answerRepository.findById(1);
+		assertTrue(oa.isPresent());
+		Answer a = oa.get();
+		assertEquals(2, a.getQuestion().getId());
+	}
 }
